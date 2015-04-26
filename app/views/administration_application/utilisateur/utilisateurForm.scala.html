@@ -1,0 +1,68 @@
+@(utilisateurForm: Form[forms.UtilisateurForm])(action: String)
+    @breadCrumb = {/<a href="/administration_application">@Messages("gestionApplication")</a>
+        /<a href="/administration_application/utilisateur">@Messages("utilisateurs")</a>
+        /<a href="#"><b>@action</b></a>
+    }
+    @main()(breadCrumb) {
+        <div class="container">
+            <div class="panel panel-default">
+                <div class="panel-deading">
+                @action
+                </div>
+                <div class="panel-body">
+                    <form id="utilisateurForm" action="/administration_application/utilisateur/formUtilisateurSubmit" method="POST">
+                        <div class="row">
+                            <div class=col-md-6>
+                                <div class="form-group">
+                                @helper.inputText(utilisateurForm("nomUtilisateur"), '_label -> Messages("nomUtilisateur"), '_id -> "nomUtilisateur", 'class -> "form-control", 'maxlenght -> 25, 'required -> true)
+                                </div>
+                            </div>
+                            <div class=col-md-6>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class=col-md-6>
+                                <div class="form-group">
+                                @helper.inputText(utilisateurForm("nom"), '_label -> Messages("nom"), '_id -> "nom", 'class -> "form-control", 'maxlenght -> 25, 'required -> true)
+                                </div>
+                            </div>
+                            <div class=col-md-6>
+                                <div class="form-group">
+                                @helper.inputText(utilisateurForm("prenom"), '_label -> Messages("prenom"), '_id -> "prenom", 'class -> "form-control", 'maxlenght -> 25, 'required -> true)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class=col-md-6>
+                                <div class="form-group">
+                                @helper.inputText(utilisateurForm("email"), '_label -> Messages("email"), '_id -> "email", 'class -> "form-control", 'maxlenght -> 25, 'required -> true)
+                                </div>
+                            </div>
+                            <div class=col-md-6>
+                                <div class="form-group">
+                                    <label for ="emailUtilisateurControle">@Html(Messages("confirmationMail"))</label>
+                                    <input type="text" class="form-control" id="emailUtilisateurControle" required="true"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class=col-md-6>
+                                <div class="form-group">
+                                @helper.inputPassword(utilisateurForm("motPasse"), '_label -> Messages("motPasse"), '_id -> "motPasse", 'class -> "form-control", 'maxlenght -> 25, 'required -> true)
+                                </div>
+                            </div>
+                            <div class=col-md-6>
+                                <div class="form-group">
+                                    <div class="form-group">
+                                        <label for ="passwordlUtilisateurControle">@Html(Messages("confirmationMotPasse"))</label>
+                                        <input type="password" class="form-control" id="passwordUtilisateurControle" required="true"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="submit" id="validerCompte" class="btn btn-primary" value="@Messages("enregistrer")"/>
+                    </form>
+                </div>
+            </div>
+        </div>
+    }

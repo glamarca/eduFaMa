@@ -1,7 +1,80 @@
-@(message: String)
-
-@main("Welcome to Play") {
-
-    @play20.welcome(message)
-
-}
+@()
+    @breadCrumb = {
+        <p></p>
+    }
+    @main()(breadCrumb) {
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">@Messages("gestionFormations")</h3>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="nav nav-pills nav-stacked">
+                                <li role="presentation"><a href="#" class="list-group-item">@Messages("cours")</a></li>
+                                <li role="presentation"><a href="#" class="list-group-item">@Messages("programmes")</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">@Messages("gestionAdministrative")</h3>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="nav nav-pills nav-stacked">
+                                <li role="presentation"><a href="#" class="list-group-item">@Messages("horaires")</a></li>
+                                <li role="presentation"><a href="#" class="list-group-item">@Messages("inscriptions")</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">@Messages("gestionPersonne")</h3>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="nav nav-pills nav-stacked">
+                                <li role="presentation"><a href="#" class="list-group-item">@Messages("etudiants")</a></li>
+                                <li role="presentation"><a href="#" class="list-group-item">@Messages("professeurs")</a></li>
+                                <li role="presentation"><a href="#" class="list-group-item">@Messages("pato")</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">@Messages("gestionInfrastructures")</h3>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="nav nav-pills nav-stacked">
+                                <li role="presentation"><a href="#" class="list-group-item">@Messages("batiments")</a></li>
+                                <li role="presentation"><a href="#" class="list-group-item">@Messages("locaux")</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">@Messages("gestionApplication")</h3>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="nav nav-pills nav-stacked">
+                                <li role="presentation"><a href="/administration_application/utilisateur" class="list-group-item">@Messages("utilisateurs")</a></li>
+                                <li role="presentation"><a href="#" class="list-group-item">@Messages("autorisations")</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }

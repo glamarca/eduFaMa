@@ -1,0 +1,88 @@
+@(utilisateurForm: Form[forms.UtilisateurForm], listeUtilisateur: Option[List[(models.entites.utilisateur.Utilisateur, models.entites.personne.Personne)]])
+@import models.entites.utilisateur.Utilisateur
+@import models.entites.personne.Personne
+
+    @breadCrumb = {/<a href="/administration_application">@Messages("gestionApplication")</a>
+        /<a href="#"><b>@Messages("Utilisateurs")</b></a>
+    }
+@main()(breadCrumb) {
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading">@Messages("recherche")</div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                        <form class="form" id="utilisateurForm" name="utilisateurForm" action="/administration_application/utilisateur/rechercherUtilisateur" method="post">
+                            <div class="col-md-10">
+                                <div class="col-md-3">
+                                    <div class="form-groupe">
+                                    @helper.inputText(utilisateurForm("nomUtilisateur"), '_label -> Messages("nomUtilisateur"), '_id -> "nomUtilisateur", 'class -> "form-control", 'maxlenght -> 25)
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-groupe">
+                                    @helper.inputText(utilisateurForm("nom"), '_label -> Messages("nom"), '_id -> "nom", 'class -> "form-control", 'maxlenght -> 25)
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-groupe">
+                                    @helper.inputText(utilisateurForm("prenom"), '_label -> Messages("prenom"), '_id -> "prenom", 'class -> "form-control", 'maxlenght -> 25)
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-groupe">
+                                    @helper.inputText(utilisateurForm("email"), '_label -> Messages("email"), '_id -> "email", 'class -> "form-control", 'maxlenght -> 25)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-1">
+                                <label for="boutonRechercher"> </label>
+                                <button type="submit" class="btn btn-default" id="boutonRechercher" aria-label="@Messages("rechercher")">
+                                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                            <div class="col-md-1">
+                                <label for="boutonAJouter"> </label>
+                                <a href="/administration_application/utilisateur/ajouterUtilisateur" class="btn btn-default" id="boutonAJouter" aria-label="@Messages("ajouter")">
+                                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        @if(utilisateurForm.hasGlobalErrors) {
+            <div class="alert alert-warning" role="alert">
+                <ul>
+                @for(error <- utilisateurForm.globalErrors) {
+                    <li>@error.message</li>
+                }
+                </ul>
+            </div>
+        }
+        @if(listeUtilisateur.isDefined && !listeUtilisateur.get.isEmpty) {
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-condensed">
+                            <tr>
+                                <th>@Messages("nomUtilisateur")</th>
+                                <th>@Messages("nom")</th>
+                                <th>@Messages("prenom")</th>
+                                <th>@Messages("email")</th>
+                            </tr>
+                            @listeUtilisateur.get.map { tuple =>
+                                <td><a href="/administration_application/utilisateur/afficherUtilisateur?id=@tuple._1.id.get" style="text-decoration : no-underline">@tuple._1.nomUtilisateur</a></td>
+                                <td>@tuple._2.nom</td>
+                                <td>@tuple._2.prenom</td>
+                                <td>@tuple._2.email</td>
+                            }
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+}
+}

@@ -31,8 +31,8 @@ val htmlLibraries = Seq(
 
 val dbLibraries = Seq (
   "mysql" % "mysql-connector-java" % "5.1.30",
-  "com.typesafe.slick" % "slick_2.11" % "3.0.0-M1",
-  "com.typesafe.play" %% "play-slick" % "0.9-M4"
+  "com.typesafe.slick" % "slick_2.11" % "2.1.0",
+  "com.typesafe.play" %% "play-slick" % "0.8.1"
 )
 
 libraryDependencies ++= basicLibraries ++ testLibraries ++ htmlLibraries ++ dbLibraries

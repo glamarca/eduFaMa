@@ -1,2 +1,56 @@
 #A
 application=enssecfra
+autorisations=Autorisations
+autorisationDescription=Gestion des groupes et permissions de l'applications
+
+#B
+batiments=Bâtiments
+
+#C
+confirmationMail=Confirmation de l'eMail
+confirmationMotPasse=Confirmation du mot de passe
+cours=Cours
+
+#E
+etudiants=Etudiants
+email=eMail
+
+#G
+gestionFormations=Gestion des formations
+gestionAdministrative=Gestion administrative
+gestionPersonne=Gestion des personnes
+gestionInfrastructures=Gestion des infrastructures
+gestionApplication=Gestion de l'application
+
+
+#H
+horaires=Horaires
+
+#I
+inscriptions=Inscriptions
+
+#L
+locaux=Locaux
+
+#M
+messageFooterContact=@Contact
+messageFooterEtablissement=Etablissement
+motPasse=Mot de passe
+
+#N
+nomUtilisateur=Utilisateur
+nopm=Nom
+
+#P
+prenom=Prenom
+programme=Programmes d'�tude
+professeurs=Professeurs
+pato=Personnel administratif et technique
+
+#R
+recherche=Recherche
+rechercher=Rechercher
+
+#U
+utilisateurs=Utilisateurs
+utilisateursDescription=Gestion des utilisateurs de l'application
