@@ -5,16 +5,23 @@
     }
     @main()(breadCrumb) {
         <div class="container">
-            <div class="panel panel-default">
-                <div class="panel-deading">
-                @action
+            @if(utilisateurForm.hasGlobalErrors) {
+                <div class="alert alert-warning" role="alert">
+                    <ul>
+                    @for(error <- utilisateurForm.globalErrors) {
+                        <li>@error.message</li>
+                    }
+                    </ul>
                 </div>
+            }
+            <div class="panel panel-default">
+                <div class="panel-heading">@action</div>
                 <div class="panel-body">
                     <form id="utilisateurForm" action="/administration_application/utilisateur/formUtilisateurSubmit" method="POST">
                         <div class="row">
                             <div class=col-md-6>
                                 <div class="form-group">
-                                @helper.inputText(utilisateurForm("nomUtilisateur"), '_label -> Messages("nomUtilisateur"), '_id -> "nomUtilisateur", 'class -> "form-control", 'maxlenght -> 25, 'required -> true)
+                                @helper.inputText(utilisateurForm("nomUtilisateur"), '_label -> Messages("nomUtilisateur"), '_id -> "nomUtilisateur", 'class -> "form-control", 'maxlenght -> 25, 'required -> true,'_showConstraints -> false)
                                 </div>
                             </div>
                             <div class=col-md-6>
@@ -23,19 +30,19 @@
                         <div class="row">
                             <div class=col-md-6>
                                 <div class="form-group">
-                                @helper.inputText(utilisateurForm("nom"), '_label -> Messages("nom"), '_id -> "nom", 'class -> "form-control", 'maxlenght -> 25, 'required -> true)
+                                @helper.inputText(utilisateurForm("nom"), '_label -> Messages("nom"), '_id -> "nom", 'class -> "form-control", 'maxlenght -> 25, 'required -> true,'_showConstraints -> false)
                                 </div>
                             </div>
                             <div class=col-md-6>
                                 <div class="form-group">
-                                @helper.inputText(utilisateurForm("prenom"), '_label -> Messages("prenom"), '_id -> "prenom", 'class -> "form-control", 'maxlenght -> 25, 'required -> true)
+                                @helper.inputText(utilisateurForm("prenom"), '_label -> Messages("prenom"), '_id -> "prenom", 'class -> "form-control", 'maxlenght -> 25, 'required -> true,'_showConstraints -> false)
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class=col-md-6>
                                 <div class="form-group">
-                                @helper.inputText(utilisateurForm("email"), '_label -> Messages("email"), '_id -> "email", 'class -> "form-control", 'maxlenght -> 25, 'required -> true)
+                                @helper.inputText(utilisateurForm("email"), '_label -> Messages("email"), '_id -> "email", 'class -> "form-control", 'maxlenght -> 25, 'required -> true,'_showConstraints -> false)
                                 </div>
                             </div>
                             <div class=col-md-6>
@@ -48,7 +55,7 @@
                         <div class="row">
                             <div class=col-md-6>
                                 <div class="form-group">
-                                @helper.inputPassword(utilisateurForm("motPasse"), '_label -> Messages("motPasse"), '_id -> "motPasse", 'class -> "form-control", 'maxlenght -> 25, 'required -> true)
+                                @helper.inputPassword(utilisateurForm("motPasse"), '_label -> Messages("motPasse"), '_id -> "motPasse", 'class -> "form-control", 'maxlenght -> 25, 'required -> true,'_showConstraints -> false)
                                 </div>
                             </div>
                             <div class=col-md-6>
@@ -60,7 +67,11 @@
                                 </div>
                             </div>
                         </div>
-                        <input type="submit" id="validerCompte" class="btn btn-primary" value="@Messages("enregistrer")"/>
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <input type="submit" id="validerCompte" class="btn btn-primary" value="@Messages("enregistrer")"/>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>

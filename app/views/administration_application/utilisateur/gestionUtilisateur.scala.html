@@ -16,34 +16,32 @@
                             <div class="col-md-10">
                                 <div class="col-md-3">
                                     <div class="form-groupe">
-                                    @helper.inputText(utilisateurForm("nomUtilisateur"), '_label -> Messages("nomUtilisateur"), '_id -> "nomUtilisateur", 'class -> "form-control", 'maxlenght -> 25)
+                                    @helper.inputText(utilisateurForm("nomUtilisateur"),'_showConstraints -> false, '_label -> Messages("nomUtilisateur"), '_id -> "nomUtilisateur", 'class -> "form-control", 'maxlenght -> 25)
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-groupe">
-                                    @helper.inputText(utilisateurForm("nom"), '_label -> Messages("nom"), '_id -> "nom", 'class -> "form-control", 'maxlenght -> 25)
+                                    @helper.inputText(utilisateurForm("nom"),'_showConstraints -> false,'_label -> Messages("nom"), '_id -> "nom", 'class -> "form-control", 'maxlenght -> 25)
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-groupe">
-                                    @helper.inputText(utilisateurForm("prenom"), '_label -> Messages("prenom"), '_id -> "prenom", 'class -> "form-control", 'maxlenght -> 25)
+                                    @helper.inputText(utilisateurForm("prenom"),'_showConstraints -> false, '_label -> Messages("prenom"), '_id -> "prenom", 'class -> "form-control", 'maxlenght -> 25)
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-groupe">
-                                    @helper.inputText(utilisateurForm("email"), '_label -> Messages("email"), '_id -> "email", 'class -> "form-control", 'maxlenght -> 25)
+                                    @helper.inputText(utilisateurForm("email"),'_showConstraints -> false, '_label -> Messages("email"), '_id -> "email", 'class -> "form-control", 'maxlenght -> 25)
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-1">
-                                <label for="boutonRechercher"> </label>
-                                <button type="submit" class="btn btn-default" id="boutonRechercher" aria-label="@Messages("rechercher")">
+                                <button type="submit" class="btn btn-default" id="boutonRechercher" aria-label="@Messages("rechercher")" style="margin-top: 25px">
                                     <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                                 </button>
                             </div>
                             <div class="col-md-1">
-                                <label for="boutonAJouter"> </label>
-                                <a href="/administration_application/utilisateur/ajouterUtilisateur" class="btn btn-default" id="boutonAJouter" aria-label="@Messages("ajouter")">
+                                <a href="/administration_application/utilisateur/modifierCreerUtilisateur" class="btn btn-default" id="boutonAJouter" aria-label="@Messages("ajouter")" style="margin-top: 25px">
                                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                                 </a>
                             </div>
@@ -74,10 +72,12 @@
                                 <th>@Messages("email")</th>
                             </tr>
                             @listeUtilisateur.get.map { tuple =>
-                                <td><a href="/administration_application/utilisateur/afficherUtilisateur?id=@tuple._1.id.get" style="text-decoration : no-underline">@tuple._1.nomUtilisateur</a></td>
-                                <td>@tuple._2.nom</td>
-                                <td>@tuple._2.prenom</td>
-                                <td>@tuple._2.email</td>
+                                <tr>
+                                    <td><a href="/administration_application/utilisateur/afficherUtilisateur?id=@tuple._1.id.get" style="text-decoration : no-underline">@tuple._1.nomUtilisateur</a></td>
+                                    <td>@tuple._2.nom</td>
+                                    <td>@tuple._2.prenom</td>
+                                    <td>@tuple._2.email</td>
+                                </tr>
                             }
                         </table>
                     </div>

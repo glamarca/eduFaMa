@@ -1,5 +1,7 @@
 package models.dao.utilisateur
 
+import java.sql.Date
+
 import forms.UtilisateurForm
 import models.entites.utilisateur.{Utilisateur, UtilisateurComponent}
 import play.api.db.slick.{Config, Profile}
@@ -15,13 +17,14 @@ class UtilisateurDao(override val profile: JdbcProfile) extends UtilisateurCompo
 object utilisateurDao  {
   val dao = new UtilisateurDao(Config.driver)
 
-  def rechercher(nomUtilisateur : Column[String],
+  def rechercher(nomUtilisateur : Column[Option[String]],
                  motPasse : Column[Option[String]]) =
     dao.utilisateurs filter { u =>
-      Case.If(motPasse.isDefined).Then(u.motPasse === motPasse).Else(Some(true)) && (u.nomUtilisateur === nomUtilisateur)
+      Case.If(motPasse.isDefined).Then(u.motPasse === motPasse).Else(Some(true)) &&
+        Case.If(nomUtilisateur.isDefined).Then(u.nomUtilisateur === nomUtilisateur).Else(Some(true))
     }
 
-  def rechercherParFormulaire(formulaire : UtilisateurForm) = rechercher(formulaire.nomUtilisateur.get,formulaire.motPasse)
+  def rechercherParFormulaire(formulaire : UtilisateurForm) = rechercher(formulaire.nomUtilisateur,formulaire.motPasse)
 
   def rechercherParId(id : Int) = dao.utilisateurs filter (u => u.id === id)
 
