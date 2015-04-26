@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- SQL XML created by WWW SQL Designer, http://code.google.com/p/wwwsqldesigner/ -->
+<!-- Active URL: file:///media/Sarace/Download/wwwsqldesigner-master/index.html -->
+<sql>
+<datatypes db="mysql">
+	<group label="Numeric" color="rgb(238,238,170)">
+		<type label="Integer" length="0" sql="INTEGER" quote=""/>
+	 	<type label="TINYINT" length="0" sql="TINYINT" quote=""/>
+	 	<type label="SMALLINT" length="0" sql="SMALLINT" quote=""/>
+	 	<type label="MEDIUMINT" length="0" sql="MEDIUMINT" quote=""/>
+	 	<type label="INT" length="0" sql="INT" quote=""/>
+		<type label="BIGINT" length="0" sql="BIGINT" quote=""/>
+		<type label="Decimal" length="1" sql="DECIMAL" re="DEC" quote=""/>
+		<type label="Single precision" length="0" sql="FLOAT" quote=""/>
+		<type label="Double precision" length="0" sql="DOUBLE" re="DOUBLE" quote=""/>
+	</group>
+
+	<group label="Character" color="rgb(255,200,200)">
+		<type label="Char" length="1" sql="CHAR" quote="'"/>
+		<type label="Varchar" length="1" sql="VARCHAR" quote="'"/>
+		<type label="Text" length="0" sql="MEDIUMTEXT" re="TEXT" quote="'"/>
+		<type label="Binary" length="1" sql="BINARY" quote="'"/>
+		<type label="Varbinary" length="1" sql="VARBINARY" quote="'"/>
+		<type label="BLOB" length="0" sql="BLOB" re="BLOB" quote="'"/>
+	</group>
+
+	<group label="Date &amp; Time" color="rgb(200,255,200)">
+		<type label="Date" length="0" sql="DATE" quote="'"/>
+		<type label="Time" length="0" sql="TIME" quote="'"/>
+		<type label="Datetime" length="0" sql="DATETIME" quote="'"/>
+		<type label="Year" length="0" sql="YEAR" quote=""/>
+		<type label="Timestamp" length="0" sql="TIMESTAMP" quote="'"/>
+	</group>
+
+	<group label="Miscellaneous" color="rgb(200,200,255)">
+		<type label="ENUM" length="1" sql="ENUM" quote=""/>
+		<type label="SET" length="1" sql="SET" quote=""/>
+		<type label="Bit" length="0" sql="bit" quote=""/>
+	</group>
+</datatypes><table x="602" y="99" name="UTILISATEUR">
+<row name="ID" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="NOM_UTILISATEUR" null="0" autoincrement="0">
+<datatype>VARCHAR(30)</datatype>
+</row>
+<row name="MOT_PASSE" null="0" autoincrement="0">
+<datatype>VARCHAR(30)</datatype>
+</row>
+<row name="DATE_CREATION" null="0" autoincrement="0">
+<datatype>DATE</datatype>
+</row>
+<row name="ID_PERSONNE" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<relation table="PERSONNE" row="ID" />
+</row>
+<key type="PRIMARY" name="">
+<part>ID</part>
+</key>
+<comment>Table des utilisateurs de l'application</comment>
+</table>
+<table x="343" y="222" name="PERSONNE">
+<row name="ID" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="NOM" null="0" autoincrement="0">
+<datatype>VARCHAR(30)</datatype>
+</row>
+<row name="PRENOM" null="1" autoincrement="0">
+<datatype>VARCHAR(30)</datatype>
+</row>
+<row name="EMAIL" null="0" autoincrement="0">
+<datatype>VARCHAR(50)</datatype>
+</row>
+<key type="PRIMARY" name="">
+<part>ID</part>
+</key>
+<comment>Table représentant les personnes physiques</comment>
+</table>
+<table x="73" y="44" name="ADRESSE">
+<row name="ID" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="RUE" null="1" autoincrement="0">
+<datatype>VARCHAR(30)</datatype>
+<default>NULL</default></row>
+<row name="NUMERO_RUE" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="LOCALITE" null="1" autoincrement="0">
+<datatype>VARCHAR(30)</datatype>
+<default>NULL</default></row>
+<row name="CODE_POSTAL" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="VILLE" null="1" autoincrement="0">
+<datatype>VARCHAR(3)</datatype>
+<default>NULL</default></row>
+<row name="PAYS" null="1" autoincrement="0">
+<datatype>VARCHAR(30)</datatype>
+<default>NULL</default></row>
+<row name="ID_PERSONNE" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<relation table="PERSONNE" row="ID" />
+</row>
+<key type="PRIMARY" name="">
+<part>ID</part>
+</key>
+</table>
+<table x="50" y="318" name="NUMERO_TELEPHONE">
+<row name="ID" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="PERSONNE" row="ID" />
+</row>
+<row name="NUMERO" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+</row>
+<row name="TYPE" null="1" autoincrement="0">
+<datatype>VARCHAR(30)</datatype>
+</row>
+<row name="ID_PERSONNE" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+</row>
+<key type="PRIMARY" name="">
+<part>ID</part>
+</key>
+</table>
+<table x="1031" y="95" name="GROUPE">
+<row name="ID" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="NOM" null="0" autoincrement="0">
+<datatype>VARCHAR(30)</datatype>
+</row>
+<row name="NOM_REF" null="0" autoincrement="0">
+<datatype>VARCHAR(30)</datatype>
+</row>
+<row name="DATE_CREATION" null="0" autoincrement="0">
+<datatype>DATE</datatype>
+</row>
+<row name="DATE_MODIFICATION" null="0" autoincrement="0">
+<datatype>DATE</datatype>
+</row>
+<row name="UTILISATEUR_MODIF" null="0" autoincrement="0">
+<datatype>VARCHAR(30)</datatype>
+</row>
+<row name="DESCRIPTION" null="1" autoincrement="0">
+<datatype>VARCHAR(150)</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>ID</part>
+</key>
+</table>
+<table x="801" y="109" name="MEMBRE_GROUPE">
+<row name="ID" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="ID_PERSONNE" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<relation table="UTILISATEUR" row="ID" />
+</row>
+<row name="ID_GROUPE" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<relation table="GROUPE" row="ID" />
+</row>
+<row name="DATE_AJOUT" null="0" autoincrement="0">
+<datatype>DATE</datatype>
+<default>'NULL'</default></row>
+<key type="PRIMARY" name="">
+<part>ID</part>
+</key>
+</table>
+<table x="1469" y="94" name="PERMISSION">
+<row name="ID" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="NOM" null="0" autoincrement="0">
+<datatype>VARCHAR(30)</datatype>
+</row>
+<row name="NOM_REF" null="0" autoincrement="0">
+<datatype>VARCHAR(30)</datatype>
+<default>'NULL'</default></row>
+<row name="DATE_CREATION" null="0" autoincrement="0">
+<datatype>DATE</datatype>
+</row>
+<row name="DESCRIPTION" null="0" autoincrement="0">
+<datatype>VARCHAR(150)</datatype>
+<default>'NULL'</default></row>
+<key type="PRIMARY" name="">
+<part>ID</part>
+</key>
+</table>
+<table x="1228" y="96" name="PERMISSION_GROUPE">
+<row name="ID" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="ID_PERMISSION" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<relation table="PERMISSION" row="ID" />
+</row>
+<row name="ID_GROUPE" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<relation table="GROUPE" row="ID" />
+</row>
+<row name="DATE_AJOUT" null="1" autoincrement="0">
+<datatype>DATE</datatype>
+</row>
+<key type="PRIMARY" name="">
+<part>ID</part>
+</key>
+</table>
+</sql>
