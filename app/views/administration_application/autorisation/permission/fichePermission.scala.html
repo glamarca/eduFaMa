@@ -1,0 +1,50 @@
+@(permission: models.entites.autorisation.Permission)
+    @breadCrumb = {
+        /<a href="/administration_application">@Messages("gestionApplication")</a>
+        /<a href="/administration_application/autorisation">@Messages("autorisations")</a>
+        /<a href="/administration_application/autorisation/permission">@Messages("permissions")</a>
+        /<a href="#"><b>@Messages("fichePermission")</b></a>
+    }
+@main()(breadCrumb) {
+    <div class="container">
+        <h3><span class="label label-primary">@permission.nom</span></h3>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <p class="control-label">@Messages("nom")</p>
+                            @permission.nom
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <p class="control-label">@Messages("nomRef")</p>
+                            @permission.nomRef
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <p class="control-label">@Messages("description")</p>
+                            @permission.description
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <p class="control-label">@Messages("dateCreation")</p>
+                            @permission.dateCreation
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <a href="/administration_application/autorisation/permission/modifierCreerPermission?id=@permission.id.get" class="btn btn-default btn-primary">@Messages("modifier")</a>
+                        <a href="/administration_application/autorisation/permission/supprimerPermission?id=@permission.id.get" class="btn btn-default">@Messages("supprimer")</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

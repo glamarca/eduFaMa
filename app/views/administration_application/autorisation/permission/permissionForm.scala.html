@@ -1,0 +1,51 @@
+@(formulairePermission : Form[models.entites.autorisation.Permission])(action : String)
+@breadCrumb = {
+    /<a href="/administration_application">@Messages("gestionApplication")</a>
+    /<a href="/administration_application/autorisation">@Messages("autorisations")</a>
+    /<a href="/administration_application/autorisation/permission">@Messages("permissions")</a>
+    /<a href="#"><b>@action</b></a>
+}
+@main()(breadCrumb){
+    <div class="container">
+        @if(formulairePermission.hasGlobalErrors) {
+            <div class="alert alert-warning" role="alert">
+                <ul>
+                @for(error <- formulairePermission.globalErrors) {
+                    <li>@error.message</li>
+                }
+                </ul>
+            </div>
+        }
+        <div class="panel panel-default">
+            <div class="panel-heading">@action</div>
+            <div class="panel-body">
+                <form id="formulairePermission" action="/administration_application/autorisation/permission/formPermissionSubmit" method="POST">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                            @helper.inputText(formulairePermission("nom"), '_label -> Messages("nom"), '_id -> "nom", 'class -> "form-control", 'maxlenght -> 25, 'required -> true,'_showConstraints -> false)
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                            @helper.inputText(formulairePermission("nomRef"), '_label -> Messages("nomRef"), '_id -> "nomRef", 'class -> "form-control", 'maxlenght -> 45, 'required -> true,'_showConstraints -> false)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                @helper.textarea(formulairePermission("description"),'_label -> Messages("description"), '_id -> "description", 'class -> "form-control",'cols -> 50,'rows -> 4, 'maxlenght -> 25, 'required -> true,'_showConstraints -> false)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <input type="submit" value="@Messages("Enregistrer")" class="btn btn-default btn-primary"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+}

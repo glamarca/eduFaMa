@@ -1,0 +1,27 @@
+@()
+@breadCrumb = {
+/<a href="/administration_application">@Messages("gestionApplication")</a>
+/<a href="#">@Messages("autorisations")</a>
+}
+    @main()(breadCrumb){
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 col-md-offset-1">
+                <ul class="nav nav-pills nav-stacked">
+                    <li role="presentation">
+                        <a href="/administration_application/autorisation/permission" class="list-group-item">
+                            <h4 class="list-group-item-heading">@Messages("permissions")</h4>
+                            <p class="list-group-item-text">@Messages("permissionsDescription")</p>
+                        </a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#" class="list-group-item">
+                            <h4 class="list-group-item-heading">@Messages("groupes")</h4>
+                            <p class="list-group-item-text">@Messages("groupesDescription")</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+}

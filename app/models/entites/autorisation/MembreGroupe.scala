@@ -1,4 +1,4 @@
-package models.entites.utilisateur
+package models.entites.autorisation
 
 import java.sql.Date
 

@@ -1,0 +1,71 @@
+@(listePermissions : Option[List[models.entites.autorisation.Permission]])
+@import models.entites.autorisation.Permission
+    @breadCrumb = {
+        /<a href="/administration_application">@Messages("gestionApplication")</a>
+        /<a href="#"><b>@Messages("Permissions")</b></a>
+    }
+@main()(breadCrumb) {
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading">@Messages("recherche")</div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                        <form id="formulaireRecherchePemission" name="formulaireRecherchePemissionId"
+                        method="Post" action="/amdministration_application/autorisation/permission/rechercherPermission"
+                        class="form" autocomplete="on">
+                            <div class="col-md-10">
+                                <div class="col-md-3 col-md-offset-2">
+                                    <div class="form-groupe">
+                                        <label for="nomId">@Messages("nom")</label>
+                                        <input type="text" id="nomId" name="nom" class="form-control" size="30" maxlength="25"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-groupe">
+                                        <label for="nomRefId">@Messages("nomRef")</label>
+                                        <input type="text" id="nomRefId" name="nomRef" class="form-control" size="30" maxlength="25"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 text-center">
+                                    <button type="submit" class="btn btn-default btn-primary" id="boutonRechercher" aria-label="@Messages("rechercher")" style="margin-top : 25 px">
+                                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                                    </button>
+                                </div>
+                                <div class="col-md-1 text-center">
+                                    <a href="/administration_application/autorisation/permission/modifierCreerPermission" class="btn btn-default" id="boutonAJouter" aria-label="@Messages("ajouter")" style="margin-top : 25 px">
+                                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @if(listePermissions.isDefined && !listePermissions.get.isEmpty) {
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-condensed">
+                        <tr>
+                            <th>@Messages("nom")</th>
+                            <th>@Messages("nomRef")</th>
+                            <th>@Messages("descritpion")</th>
+                            <th>@Messages("dateCreation")</th>
+                        </tr>
+                        @listePermissions.get.map { permission =>
+                            <tr>
+                                <td><a href="/administration_application/permission/afficherPermission?id=@permission.id.get" style="text-decoration : no-underline">@permission.nom</a></td>
+                                <td>@permission.nomRef</td>
+                                <td>@permission.description.getOrElse("../../../../public")</td>
+                                <td>@permission.dateCreation</td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    }
+}

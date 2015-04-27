@@ -3,23 +3,30 @@
 # ~~~~
 
 # Home page
-GET         /                                                                       controllers.accueil.Acceuil.index
+GET         /                                                                               controllers.accueil.Acceuil.index
 
 #Administration Apllication
-GET         /administration_application                                             controllers.administration_application.GestionApplication.gestionApplicationIndex
-GET         /administration_application/utilisateur                                 controllers.administration_application.GestionUtilisateur.utilisateurIndex
-GET         /administration_application/utilisateur/afficherUtilisateur             controllers.administration_application.GestionUtilisateur.afficheUtilisateur(id : Int)
-GET         /administration_application/utilisateur/modifierCreerUtilisateur        controllers.administration_application.GestionUtilisateur.afficheUtilisateurForm(id : Option[Int])
-GET         /administration_application/utilisateur/supprimerUtilisateur            controllers.administration_application.GestionUtilisateur.supprimerUtilisateur(id : Int)
+GET         /administration_application                                                     controllers.administration_application.GestionApplication.gestionApplicationIndex
+GET         /administration_application/utilisateur                                         controllers.administration_application.GestionUtilisateur.utilisateurIndex
+GET         /administration_application/utilisateur/afficherUtilisateur                     controllers.administration_application.GestionUtilisateur.afficheUtilisateur(id : Int)
+GET         /administration_application/utilisateur/modifierCreerUtilisateur                controllers.administration_application.GestionUtilisateur.afficheUtilisateurForm(id : Option[Int])
+GET         /administration_application/utilisateur/supprimerUtilisateur                    controllers.administration_application.GestionUtilisateur.supprimerUtilisateur(id : Int)
+GET         /administration_application/autorisation                                        controllers.administration_application.GestionAutorisation.autorisationIndex
+GET         /administration_application/autorisation/permission                             controllers.administration_application.GestionPermission.permissionIndex
+GET         /administration_application/autorisation/permission/modifierCreerPermission     controllers.administration_application.GestionPermission.afficherPermissionForm(id : Option[Int])
+GET         /administration_application/autorisation/permission/afficherPermission          controllers.administration_application.GestionPermission.afficherPermission(id : Int)
+GET         /administration_application/autorisation/permission/supprimerPermission         controllers.administration_application.GestionPermission.supprimerPermission(id : Int)
 
-POST        /administration_application/utilisateur/formUtilisateurSubmit           controllers.administration_application.GestionUtilisateur.modifierCreerUtilisateur
-POST        /administration_application/utilisateur/rechercherUtilisateur           controllers.administration_application.GestionUtilisateur.rechercherUtilisateur
+POST        /administration_application/utilisateur/formUtilisateurSubmit                   controllers.administration_application.GestionUtilisateur.modifierCreerUtilisateur
+POST        /administration_application/utilisateur/rechercherUtilisateur                   controllers.administration_application.GestionUtilisateur.rechercherUtilisateur
+POST        /administration_application/autorisation/permission/rechercherPermision         controllers.administration_application.GestionPermission.rechercherPermission
+POST        /administration_application/autorisation/permission/formPermissionSubmit        controllers.administration_application.GestionPermission.creerModifierPermission
 
 
 # Map static resources from the /public folder to the /assets URL path
-GET         /assets/*file                                                           controllers.Assets.at(path="/public", file)
-GET         /assets/*file                                                           controllers.Assets.at(path="/public", file)
-GET         /webjars/*file                                                          controllers.WebJarAssets.at(file)
+GET         /assets/*file                                                                   controllers.Assets.at(path="/public", file)
+GET         /assets/*file                                                                   controllers.Assets.at(path="/public", file)
+GET         /webjars/*file                                                                  controllers.WebJarAssets.at(file)
 
 # Route pour appel methode depuis javascript
-GET         /javascriptRoutes                                                       controllers.common.JavaScriptRouter.javascriptRoutes
+GET         /javascriptRoutes                                                               controllers.common.JavaScriptRouter.javascriptRoutes

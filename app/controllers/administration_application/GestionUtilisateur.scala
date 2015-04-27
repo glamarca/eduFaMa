@@ -1,8 +1,7 @@
 package controllers.administration_application
 
-import com.mysql.jdbc.Driver
 import forms.UtilisateurForm
-import models.dao.personne.{PersonneDao, personneDao}
+import models.dao.personne.{personneDao}
 import models.dao.utilisateur.{utilisateurDao}
 import models.entites.personne.Personne
 import models.entites.utilisateur.Utilisateur
