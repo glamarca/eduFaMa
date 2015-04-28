@@ -75,7 +75,7 @@ object GestionPermission extends Controller {
    * @return La permission mise à jour.
    */
   def modifierPermission(permission: Permission): Permission = DB.withSession { implicit request =>
-    permissionDao.rechercherParId(permission.id.get).update(permission)
+    permissionDao.rechercherParId(permission.id.get).map(p => (p.nom,p.nomRef,p.description)).update((permission.nom,permission.nomRef,permission.description.orNull))
     permissionDao.rechercherParId(permission.id.get).first
   }
 
@@ -85,8 +85,9 @@ object GestionPermission extends Controller {
    * @return La fiche de la permission créée
    */
   def creerPermission(permission: Permission) : Permission = DB.withSession{implicit request =>
-    permissionDao.dao.permissions += permission
-    permissionDao.rechercherParId(permission.id.get).first
+    val permissionWithDate = Permission(None,permission.nom,permission.nomRef,new java.sql.Date(new java.util.Date().getTime()),permission.description)
+    permissionDao.dao.permissions += permissionWithDate
+    permissionDao.rechercherParNomRef(permission.nomRef).first
   }
 
   /**
@@ -96,16 +97,16 @@ object GestionPermission extends Controller {
   def creerModifierPermission = Action { implicit request =>
     formulairePermission.bindFromRequest.fold(
       formWithError => {
-        BadRequest
+        BadRequest(views.html.administration_application.autorisation.permission.permissionForm(formWithError)(Messages("erreurFormulaire")))
       },
       formulaire => {
         if(formulaire.id.isDefined){
           val permissionRetour = modifierPermission(formulaire)
-          Ok
+          Ok(views.html.administration_application.autorisation.permission.fichePermission(permissionRetour))
         }
         else{
           val permissionRetour = creerPermission(formulaire)
-          Ok
+          Ok(views.html.administration_application.autorisation.permission.fichePermission(permissionRetour))
         }
       }
     )
@@ -121,6 +122,11 @@ object GestionPermission extends Controller {
     Ok(views.html.administration_application.autorisation.permission.gestionPermission(None))
   }
 
+  /**
+   * Affiche une fiche de permission
+   * @param id L'id de la permission à afficher
+   * @return La vue de la fiche de permission
+   */
   def afficherPermissionForm(id : Option[Int]) = DBAction { implicit request =>
     if(id.isDefined){
       val permission = permissionDao.rechercherParId(id.get).first

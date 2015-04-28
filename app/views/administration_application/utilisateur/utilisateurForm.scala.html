@@ -42,28 +42,34 @@
                         <div class="row">
                             <div class=col-md-6>
                                 <div class="form-group">
-                                @helper.inputText(utilisateurForm("email"), '_label -> Messages("email"), '_id -> "email", 'class -> "form-control", 'maxlenght -> 25, 'required -> true,'_showConstraints -> false)
+                                @helper.inputText(utilisateurForm("email"), '_label -> Messages("email"), '_id -> "email", 'class -> "form-control", 'maxlenght -> 25, 'required -> true,
+                                    '_showConstraints -> false,'onblur -> "verifierEquivalence(%s,%s,%s,%s);".format("'email'","'emailUtilisateurControle'","'erreurEmailConfirmation'","'"+Messages("emailsNonEquivalents")+"'"))
                                 </div>
                             </div>
                             <div class=col-md-6>
                                 <div class="form-group">
                                     <label for ="emailUtilisateurControle">@Html(Messages("confirmationMail"))</label>
-                                    <input type="text" class="form-control" id="emailUtilisateurControle" required="true"/>
+                                    <input type="text" class="form-control" id="emailUtilisateurControle" required="true"
+                                    onblur="verifierEquivalence('email','emailUtilisateurControle','erreurEmailConfirmation','@Messages("emailsNonEquivalents")');"/>
+                                    <div id="erreurEmailConfirmation" class="help-block with-errors" style="display:none"></div>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class=col-md-6>
                                 <div class="form-group">
-                                @helper.inputPassword(utilisateurForm("motPasse"), '_label -> Messages("motPasse"), '_id -> "motPasse", 'class -> "form-control", 'maxlenght -> 25, 'required -> true,'_showConstraints -> false)
+                                @helper.inputPassword(utilisateurForm("motPasse"), '_label -> Messages("motPasse"), '_id -> "motPasse", 'class -> "form-control", 'maxlenght -> 25, 'required -> true,
+                                    '_showConstraints -> false,'onblur -> "verifierEquivalence(%s,%s,%s,%s);".format("'motPasse'","'passwordUtilisateurControle'","'erreurMotPasseConfirmation'","'"+Messages("motsPasseNonEquivalents")+"'"))
                                 </div>
                             </div>
                             <div class=col-md-6>
                                 <div class="form-group">
                                     <div class="form-group">
                                         <label for ="passwordlUtilisateurControle">@Html(Messages("confirmationMotPasse"))</label>
-                                        <input type="password" class="form-control" id="passwordUtilisateurControle" required="true"/>
+                                        <input type="password" class="form-control" id="passwordUtilisateurControle" required="true"
+                                        onblur="verifierEquivalence('motPasse','passwordUtilisateurControle','erreurMotPasseConfirmation','@Messages("motsPasseNonEquivalents")');"/>
                                     </div>
+                                    <div id="erreurMotPasseConfirmation" class="help-block with-errors" style="display:none"></div>
                                 </div>
                             </div>
                         </div>

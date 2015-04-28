@@ -19,7 +19,7 @@ GET         /administration_application/autorisation/permission/supprimerPermiss
 
 POST        /administration_application/utilisateur/formUtilisateurSubmit                   controllers.administration_application.GestionUtilisateur.modifierCreerUtilisateur
 POST        /administration_application/utilisateur/rechercherUtilisateur                   controllers.administration_application.GestionUtilisateur.rechercherUtilisateur
-POST        /administration_application/autorisation/permission/rechercherPermision         controllers.administration_application.GestionPermission.rechercherPermission
+POST        /administration_application/autorisation/permission/rechercherPermission        controllers.administration_application.GestionPermission.rechercherPermission
 POST        /administration_application/autorisation/permission/formPermissionSubmit        controllers.administration_application.GestionPermission.creerModifierPermission
 
 

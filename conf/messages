@@ -1,7 +1,8 @@
 #A
+ajouter=Ajouter
 application=enssecfra
 autorisations=Autorisations
-autorisationDescription=Gestion des groupes et permissions de l'applications
+autorisationsDescription=Gestion des groupes et permissions de l'applications
 
 #B
 batiments=Bâtiments
@@ -11,10 +12,17 @@ confirmationMail=Confirmation de l''eMail
 confirmationMotPasse=Confirmation du mot de passe
 cours=Cours
 creationUtilisateur=Création d''un utilisateur
+creationPermission=Création d''une permission
+
+#D
+dateCreation=Date de création
 
 #E
 etudiants=Etudiants
 email=eMail
+emailsNonEquivalents=Les 2 emails sont différents
+enregistrer=Enregistrer
+erreurFormulaire=Les données ne sont pas correctes.
 
 #G
 gestionFormations=Gestion des formations
@@ -22,6 +30,8 @@ gestionAdministrative=Gestion administrative
 gestionPersonne=Gestion des personnes
 gestionInfrastructures=Gestion des infrastructures
 gestionApplication=Gestion de l''application
+groupes=Groupes
+groupesDescription=Gestion des groupe d''utilisateurs et des permissions qui y sont associées
 
 
 #H
@@ -35,14 +45,21 @@ locaux=Locaux
 
 #M
 messageFooterContact=@Contact
-messageFooterEtablissement=Etablissement
+messageFooterEtablissement=@Etablissement
 motPasse=Mot de passe
+motsPasseNonEquivalents=Les deux mots de passes sont différents"
+modificationPermission=Modification d''une permission
+modificationUtilisateur=Modification d''un utilisateur.
+
 
 #N
 nomUtilisateur=Utilisateur
 nom=Nom
+nomRef=Nom de référence
 
 #P
+permissions=Permissions
+permissionsDescription=Gestion des permissions de l'application.
 prenom=Prenom
 programme=Programmes d''étude
 professeurs=Professeurs

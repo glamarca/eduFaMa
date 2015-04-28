@@ -12,6 +12,7 @@ class PermissionDao(override val profile: JdbcProfile) extends PermissionCompone
 }
 
 object permissionDao {
+
   val dao = new PermissionDao(Config.driver)
 
   def rechercher(nom : Column[Option[String]],nomRef : Column[Option[String]]) =
@@ -23,6 +24,8 @@ object permissionDao {
   def rechercherParNoms(nom : Option[String],nomRef : Option[String]) = rechercher(nom,nomRef)
 
   def rechercherParId(id : Int) = dao.permissions filter (p => p.id === id)
+
+  def rechercherParNomRef(nomRef: String) = dao.permissions filter (p => p.nomRef === nomRef)
 
 
 }
