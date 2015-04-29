@@ -16,6 +16,7 @@ creationPermission=Création d''une permission
 
 #D
 dateCreation=Date de création
+description=Description
 
 #E
 etudiants=Etudiants
@@ -41,6 +42,7 @@ horaires=Horaires
 inscriptions=Inscriptions
 
 #L
+listeGroupesPermission=Liste des groupes auxquels appartient la permission
 locaux=Locaux
 
 #M

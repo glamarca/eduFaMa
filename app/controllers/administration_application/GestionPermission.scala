@@ -1,6 +1,6 @@
 package controllers.administration_application
 
-import models.dao.autorisation.permissionDao
+import models.dao.autorisation.{permissionGroupeDao, permissionDao}
 import models.entites.autorisation.Permission
 import play.api.data.Form
 import play.api.data.Forms._
@@ -37,7 +37,7 @@ object GestionPermission extends Controller {
 
   /**
    * Page d'accueil de la gestion des permissions
-   * @return Une liste de permissions vide dans la vue
+   * @return Une liste de permissions vide dans la vue recherche
    */
   def permissionIndex = Action { implicit request =>
     Ok(views.html.administration_application.autorisation.permission.gestionPermission(None))
@@ -66,7 +66,7 @@ object GestionPermission extends Controller {
    */
   def afficherPermission(id : Int) = DBAction { implicit request =>
       val permission = permissionDao.rechercherParId(id).first
-      Ok
+      Ok(views.html.administration_application.autorisation.permission.fichePermission(permission,None))
   }
 
   /**
@@ -102,11 +102,11 @@ object GestionPermission extends Controller {
       formulaire => {
         if(formulaire.id.isDefined){
           val permissionRetour = modifierPermission(formulaire)
-          Ok(views.html.administration_application.autorisation.permission.fichePermission(permissionRetour))
+          Redirect(controllers.administration_application.routes.GestionPermission.afficherPermission(permissionRetour.id.get))
         }
         else{
           val permissionRetour = creerPermission(formulaire)
-          Ok(views.html.administration_application.autorisation.permission.fichePermission(permissionRetour))
+          Redirect(controllers.administration_application.routes.GestionPermission.afficherPermission(permissionRetour.id.get))
         }
       }
     )

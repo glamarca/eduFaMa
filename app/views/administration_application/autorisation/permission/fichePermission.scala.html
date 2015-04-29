@@ -1,4 +1,4 @@
-@(permission: models.entites.autorisation.Permission)
+@(permission: models.entites.autorisation.Permission,listeGroupes : Option[List[models.entites.autorisation.Groupe]])
     @breadCrumb = {
         /<a href="/administration_application">@Messages("gestionApplication")</a>
         /<a href="/administration_application/autorisation">@Messages("autorisations")</a>
@@ -13,13 +13,13 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            @Messages("nom")<br/>
+                            <b>@Messages("nom")</b><br/>
                             @permission.nom
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            @Messages("nomRef")<br/>
+                            <b>@Messages("nomRef")</b><br/>
                             @permission.nomRef
                         </div>
                     </div>
@@ -27,13 +27,13 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            @Messages("description")<br/>
+                            <b>@Messages("description")</b><br/>
                             @permission.description
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            @Messages("dateCreation")<br/>
+                            <b>@Messages("dateCreation")</b><br/>
                             @permission.dateCreation
                         </div>
                     </div>
@@ -43,6 +43,20 @@
                         <a href="/administration_application/autorisation/permission/modifierCreerPermission?id=@permission.id.get" class="btn btn-default btn-primary">@Messages("modifier")</a>
                         <a href="/administration_application/autorisation/permission/supprimerPermission?id=@permission.id.get" class="btn btn-default">@Messages("supprimer")</a>
                     </div>
+                </div>
+                <br/>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="list-group">
+                            <h4 class="list-group-item-heading">@Messages("listeGroupesPermission")</h4>
+                            @if(listeGroupes.isDefined && !listeGroupes.isEmpty) {
+                                @listeGroupes.get.map { groupe =>
+                                    <p class="list-group-item-text"><a href="/administration_application/autorisation/groupe/afficherGroupe?id=@groupe.id">@groupe.nom</a></p>
+                                }
+                            }
+                        </div>
+                    </div>
+                    <div class="col-md-6"></div>
                 </div>
             </div>
         </div>
