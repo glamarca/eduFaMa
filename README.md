@@ -22,7 +22,7 @@ These values are hard coded in the applications, but can be customized in the fi
 
 ### Clone the repository
 
-After installing and configuring Activator and MySQL, now it's time to install Enssecfra. Clone the repository locally using (Git)[http://git-scm.com/downloads]:
+After installing and configuring Activator and MySQL, now it's time to install Enssecfra. Clone the repository locally using [Git](http://git-scm.com/downloads):
 
     $ mkdir projects
     $ cd projects
@@ -39,13 +39,13 @@ To run the application:
 
     [enssecfra] $ run
 
-Once the server is started, you can open the application in your browser accessing the address: [http://localhost:9000].
+Once the server is started, you can open the application in your browser accessing the address: http://localhost:9000 .
 
 ## Contributing
 
 To contribute to the project you have to follow the exactly same steps of the previous section, but cloning from your own fork:
 
-1. Login on (GitHub)[https://github.com]
+1. Login on [GitHub](https://github.com)
 2. Visit the repository at: https://github.com/glamarca/enssecfra
 3. Click on **Fork** to have your own copy of the project
 
