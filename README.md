@@ -1,12 +1,14 @@
 # Application de Gestion de l'enseignement secondaire francophone de Belgique
 
-## Download and Install Activator
+## Installing
+
+### Download and Install Activator
 
 Activator is a tool created by Typesafe to create and develop Scala applications. You can download Activator from the following address: https://www.typesafe.com/community/core-tools/activator-and-sbt
 
 To install activator, simply unzip the downloaded file and add the absolute path to the new directory in the environment variable `$PATH`. You will be able to run the command `activator` from anywhere in your file system.
 
-## Create a new MySQL Database
+### Create a new MySQL Database
 
 Enssecfra depends on a MySQL Server to work propertly. The installation varies according to your operating system. If you are not sure how to create a MySQL database, just follow the instructions at: http://www.hildeberto.com/2009/06/creating-a-new-mysql-database-for-dummies.html.
 
@@ -18,7 +20,7 @@ User password: ensecfra2015
 
 These values are hard coded in the applications, but can be customized in the file `conf/application.conf`. Change them when you put this application in production.
 
-## Installation
+### Clone the repository
 
 After installing and configuring Activator and MySQL, now it's time to install Enssecfra. Clone the repository locally using (Git)[http://git-scm.com/downloads]:
 
@@ -26,7 +28,11 @@ After installing and configuring Activator and MySQL, now it's time to install E
     $ cd projects
     $ git clone https://github.com/glamarca/enssecfra.git
 
-It will create the directory `enssecfra` where all cloned files will be located. To run the application:
+It will create the directory `enssecfra` where all cloned files will be located. 
+
+### Run the Application
+
+To run the application:
 
     $ cd enssecfra
     $ activator
