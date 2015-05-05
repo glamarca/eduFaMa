@@ -1,0 +1,22 @@
+@()(content : Html)
+
+<!DOCTYPE html>
+<html>
+  <head>
+      <title>Scala-Play-Slick-Bootstrap</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1"/>
+      <link rel="stylesheet" media="screen" href='@routes.WebJarAssets.at(WebJarAssets.locate("bootstrap.min.css"))'>
+      <link rel="stylesheet" media="screen" href='@routes.Assets.at("stylesheets/main.css")'>
+      <link rel="shortcut icon" type="image/png" href='@routes.Assets.at("images/favicon.ico")'>
+  </head>
+  <body>
+
+    @content
+
+    <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("jquery.min.js"))'></script>
+    <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("bootstrap.min.js"))'></script>
+    <script type='text/javascript' src='@routes.Assets.at("javascripts/main.js")'></script>
+  </body>
+</html>
