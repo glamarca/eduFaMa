@@ -35,8 +35,8 @@ object projectBuild extends Build {
   )
 
   lazy val root = Project("project", file(".")).enablePlugins(PlayScala) settings(
-    name := """project""",
-    version := "1.0",
+    name := """eduFaMa""",
+    version := "0.1",
     scalaVersion := "2.11.6",
     resolvers += "Sonatype snapshots" at "http://oss.sonatype.org/content/repositories/snapshots/",
     libraryDependencies ++= basicLibraries ++ testLibraries ++ htmlLibraries ++ dbLibraries ++ securityLibraries
